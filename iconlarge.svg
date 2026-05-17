@@ -1,0 +1,16 @@
+<svg width="450" height="125" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="450" height="150" fill="none"/>
+
+  <g transform="translate(20, 20)">
+    <rect x="0" y="25" width="12" height="50" rx="6" fill="#eb5959" />
+    <rect x="20" y="35" width="12" height="40" rx="6" fill="#ff0000" />
+    <rect x="40" y="15" width="12" height="60" rx="6" fill="#ffffff" />
+  </g>
+
+  <text x="90" y="75" font-family="Arial, sans-serif" font-weight="800" font-size="42" fill="#ff0000">
+    Uni<tspan fill="#ffffff">Plan</tspan>
+  </text>
+  <text x="92" y="95" font-family="Arial, sans-serif" font-weight="400" font-size="14" fill="#718096" letter-spacing="1">
+    ACADEMIC ORGANIZATION
+  </text>
+</svg>
