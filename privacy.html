@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>License - UniPlan</title>
+    <title>Privacy Policy - UniPlan</title>
     <link rel="icon" href="favicon.png" type="image/png" />
     <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/marked@15.0.11/marked.min.js"></script>
     <style>
-      .license-section {
+      .privacy-section {
         max-width: 800px;
         margin: 0 auto;
         padding: 48px 0;
       }
 
-      .license-content {
+      .privacy-content {
         background: var(--card);
         border: 1px solid var(--overlay);
         border-radius: 24px;
@@ -22,14 +22,14 @@
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
       }
 
-      .license-content h1 {
+      .privacy-content h1 {
         font-size: 28px;
         font-weight: 700;
         margin-bottom: 16px;
         color: var(--tint);
       }
 
-      .license-content h2 {
+      .privacy-content h2 {
         font-size: 22px;
         font-weight: 600;
         margin-bottom: 12px;
@@ -37,11 +37,11 @@
         color: var(--tint);
       }
 
-      .license-content h2:first-of-type {
+      .privacy-content h2:first-of-type {
         margin-top: 0;
       }
 
-      .license-content h3 {
+      .privacy-content h3 {
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 10px;
@@ -49,56 +49,56 @@
         color: var(--tint);
       }
 
-      .license-content p {
+      .privacy-content p {
         font-size: 15px;
         line-height: 1.7;
         color: var(--text-secondary);
         margin-bottom: 12px;
       }
 
-      .license-content strong {
+      .privacy-content strong {
         color: var(--text);
       }
 
-      .license-content ul, .license-content ol {
+      .privacy-content ul, .privacy-content ol {
         margin-bottom: 12px;
         padding-left: 24px;
       }
 
-      .license-content li {
+      .privacy-content li {
         font-size: 15px;
         line-height: 1.7;
         color: var(--text-secondary);
         margin-bottom: 6px;
       }
 
-      .license-content hr {
+      .privacy-content hr {
         border: none;
         border-top: 1px solid var(--border);
         margin: 24px 0;
       }
 
-      .license-content table {
+      .privacy-content table {
         width: 100%;
         border-collapse: collapse;
         margin-bottom: 12px;
         font-size: 14px;
       }
 
-      .license-content th, .license-content td {
+      .privacy-content th, .privacy-content td {
         border: 1px solid var(--border);
         padding: 8px 12px;
         text-align: left;
         color: var(--text-secondary);
       }
 
-      .license-content th {
+      .privacy-content th {
         background: var(--overlay);
         color: var(--text);
         font-weight: 600;
       }
 
-      .license-content code {
+      .privacy-content code {
         background: var(--overlay);
         padding: 2px 6px;
         border-radius: 4px;
@@ -152,13 +152,13 @@
       }
 
       @media (max-width: 768px) {
-        .license-content {
+        .privacy-content {
           padding: 24px;
         }
-        .license-content h1 {
+        .privacy-content h1 {
           font-size: 24px;
         }
-        .license-content h2 {
+        .privacy-content h2 {
           font-size: 18px;
         }
       }
@@ -179,7 +179,7 @@
       </header>
 
       <main>
-        <section class="license-section">
+        <section class="privacy-section">
           <a href="/" class="back-link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
@@ -187,10 +187,10 @@
             Back to Home
           </a>
 
-          <div class="license-content" id="content">
+          <div class="privacy-content" id="content">
             <div class="loading-state">
               <div class="spinner"></div>
-              <p>Loading license...</p>
+              <p>Loading privacy policy...</p>
             </div>
           </div>
         </section>
@@ -202,22 +202,22 @@
     </div>
 
     <script>
-      const LICENSE_URL = "https://raw.githubusercontent.com/dStudios-735453/UniPlan_Releases/main/LICENSE";
+      const PRIVACY_URL = "https://raw.githubusercontent.com/dStudios-735453/UniPlan_Releases/main/privacy.md";
 
-      async function loadLicense() {
+      async function loadPrivacy() {
         const container = document.getElementById("content");
         try {
-          const response = await fetch(LICENSE_URL);
-          if (!response.ok) throw new Error("Failed to fetch license");
+          const response = await fetch(PRIVACY_URL);
+          if (!response.ok) throw new Error("Failed to fetch privacy policy");
           const markdown = await response.text();
           container.innerHTML = marked.parse(markdown);
         } catch (error) {
-          container.innerHTML = '<div class="error-state"><p>Failed to load license. Please try again later.</p></div>';
-          console.error("Error loading license:", error);
+          container.innerHTML = '<div class="error-state"><p>Failed to load privacy policy. Please try again later.</p></div>';
+          console.error("Error loading privacy policy:", error);
         }
       }
 
-      document.addEventListener("DOMContentLoaded", loadLicense);
+      document.addEventListener("DOMContentLoaded", loadPrivacy);
     </script>
   </body>
 </html>
