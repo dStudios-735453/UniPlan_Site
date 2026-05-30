@@ -57,7 +57,7 @@ const downloadData = {
         id: "flathub",
         name: "Flathub",
         type: "command",
-        command: "flatpak install flathub app.uniplan.UniPlan",
+        command: "flatpak install flathub org.dstudios.uniplan",
       },
       {
         id: "arch",
