@@ -110,7 +110,7 @@ function detectOS() {
     return "mac";
   if (/win/.test(userAgent)) return "windows";
   if (/linux/.test(userAgent)) return "linux";
-  return "windows";
+  return "mac";
 }
 
 function detectArch() {
@@ -169,6 +169,17 @@ function updateDownloadUrls() {
     ]);
 }
 
+function detectMobilePlatform() {
+  return /iphone|ipad|ipod/i.test(navigator.userAgent) ? "ios" : "android";
+}
+
+function detectLinuxDistro() {
+  const ua = navigator.userAgent;
+  if (/arch/i.test(ua) || /manjaro/i.test(ua) || /endeavouros/i.test(ua)) return "arch";
+  if (/void/i.test(ua)) return "void";
+  return downloadData.linux.packageManagers[0].id;
+}
+
 function init() {
   const osButtons = document.querySelectorAll("#os-control .segment-btn");
   osButtons.forEach((btn) => {
@@ -178,6 +189,12 @@ function init() {
       btn.classList.remove("active");
     }
   });
+
+  if (currentOS === "mobile") {
+    currentPM = detectMobilePlatform();
+  } else if (currentOS === "linux") {
+    currentPM = detectLinuxDistro();
+  }
 
   fetchLatestRelease().then(() => {
     setupOSControl();
@@ -193,7 +210,13 @@ function setupOSControl() {
       osButtons.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
       currentOS = btn.dataset.os;
-      currentPM = downloadData[currentOS].packageManagers[0].id;
+      if (currentOS === "mobile") {
+        currentPM = detectMobilePlatform();
+      } else if (currentOS === "linux") {
+        currentPM = detectLinuxDistro();
+      } else {
+        currentPM = downloadData[currentOS].packageManagers[0].id;
+      }
       updatePackageManagerControl();
       updateDownloadContent();
     });
