@@ -399,7 +399,24 @@ main {
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .logo {
+    height: 90px;
+  }
+
+  .nav {
     gap: 24px;
+    justify-content: center;
   }
 
   .hero-title {
@@ -432,22 +449,35 @@ main {
   .copy-btn {
     justify-content: center;
   }
-
-  .nav {
-    gap: 24px;
-  }
 }
 
 @media (max-width: 480px) {
+  .header {
+    gap: 16px;
+  }
+
+  .logo {
+    height: 72px;
+  }
+
   .hero-title {
     font-size: 28px;
   }
 
   .hero-subtitle {
     font-size: 16px;
+    margin-bottom: 32px;
   }
 
   .features-grid {
     grid-template-columns: 1fr;
+  }
+
+  .feature-card {
+    text-align: center;
+  }
+
+  .feature-icon {
+    margin: 0 auto 16px;
   }
 }
