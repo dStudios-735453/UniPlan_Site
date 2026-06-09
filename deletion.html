@@ -1,232 +1,227 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Account Deletion - UniPlan</title>
-    <link rel="icon" href="favicon.png" type="image/png" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdn.jsdelivr.net/npm/marked@15.0.11/marked.min.js"></script>
-    <style>
-      .privacy-section {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 48px 0;
-      }
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Account Deletion - UniPlan</title>
+		<link rel="icon" href="favicon.png" type="image/png" />
+		<link rel="stylesheet" href="styles.css" />
+		<script src="https://cdn.jsdelivr.net/npm/marked@15.0.11/marked.min.js"></script>
+		<style>
+			.privacy-section {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 48px 0;
+			}
 
-      .privacy-content {
-        background: var(--card);
-        border: 1px solid var(--overlay);
-        border-radius: 24px;
-        padding: 48px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-      }
+			.privacy-content {
+				background: var(--card);
+				border: 1px solid var(--overlay);
+				border-radius: 24px;
+				padding: 48px;
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+			}
 
-      .privacy-content h1 {
-        font-size: 28px;
-        font-weight: 700;
-        margin-bottom: 16px;
-        color: var(--tint);
-      }
+			.privacy-content h1 {
+				font-size: 28px;
+				font-weight: 700;
+				margin-bottom: 16px;
+				color: var(--tint);
+			}
 
-      .privacy-content h2 {
-        font-size: 22px;
-        font-weight: 600;
-        margin-bottom: 12px;
-        margin-top: 32px;
-        color: var(--tint);
-      }
+			.privacy-content h2 {
+				font-size: 22px;
+				font-weight: 600;
+				margin-bottom: 12px;
+				margin-top: 32px;
+				color: var(--tint);
+			}
 
-      .privacy-content h2:first-of-type {
-        margin-top: 0;
-      }
+			.privacy-content h2:first-of-type {
+				margin-top: 0;
+			}
 
-      .privacy-content h3 {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 10px;
-        margin-top: 24px;
-        color: var(--tint);
-      }
+			.privacy-content h3 {
+				font-size: 18px;
+				font-weight: 600;
+				margin-bottom: 10px;
+				margin-top: 24px;
+				color: var(--tint);
+			}
 
-      .privacy-content p {
-        font-size: 15px;
-        line-height: 1.7;
-        color: var(--text-secondary);
-        margin-bottom: 12px;
-      }
+			.privacy-content p {
+				font-size: 15px;
+				line-height: 1.7;
+				color: var(--text-secondary);
+				margin-bottom: 12px;
+			}
 
-      .privacy-content strong {
-        color: var(--text);
-      }
+			.privacy-content strong {
+				color: var(--text);
+			}
 
-      .privacy-content ul,
-      .privacy-content ol {
-        margin-bottom: 12px;
-        padding-left: 24px;
-      }
+			.privacy-content ul,
+			.privacy-content ol {
+				margin-bottom: 12px;
+				padding-left: 24px;
+			}
 
-      .privacy-content li {
-        font-size: 15px;
-        line-height: 1.7;
-        color: var(--text-secondary);
-        margin-bottom: 6px;
-      }
+			.privacy-content li {
+				font-size: 15px;
+				line-height: 1.7;
+				color: var(--text-secondary);
+				margin-bottom: 6px;
+			}
 
-      .privacy-content hr {
-        border: none;
-        border-top: 1px solid var(--border);
-        margin: 24px 0;
-      }
+			.privacy-content hr {
+				border: none;
+				border-top: 1px solid var(--border);
+				margin: 24px 0;
+			}
 
-      .privacy-content table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 12px;
-        font-size: 14px;
-      }
+			.privacy-content table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-bottom: 12px;
+				font-size: 14px;
+			}
 
-      .privacy-content th,
-      .privacy-content td {
-        border: 1px solid var(--border);
-        padding: 8px 12px;
-        text-align: left;
-        color: var(--text-secondary);
-      }
+			.privacy-content th,
+			.privacy-content td {
+				border: 1px solid var(--border);
+				padding: 8px 12px;
+				text-align: left;
+				color: var(--text-secondary);
+			}
 
-      .privacy-content th {
-        background: var(--overlay);
-        color: var(--text);
-        font-weight: 600;
-      }
+			.privacy-content th {
+				background: var(--overlay);
+				color: var(--text);
+				font-weight: 600;
+			}
 
-      .privacy-content code {
-        background: var(--overlay);
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-size: 13px;
-        color: var(--tint);
-      }
+			.privacy-content code {
+				background: var(--overlay);
+				padding: 2px 6px;
+				border-radius: 4px;
+				font-size: 13px;
+				color: var(--tint);
+			}
 
-      .back-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: var(--text-secondary);
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 500;
-        margin-bottom: 24px;
-        transition: color 0.2s ease;
-      }
+			.back-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				color: var(--text-secondary);
+				text-decoration: none;
+				font-size: 14px;
+				font-weight: 500;
+				margin-bottom: 24px;
+				transition: color 0.2s ease;
+			}
 
-      .back-link:hover {
-        color: var(--tint);
-      }
+			.back-link:hover {
+				color: var(--tint);
+			}
 
-      .loading-state {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 64px 0;
-        color: var(--text-secondary);
-        gap: 16px;
-      }
+			.loading-state {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				padding: 64px 0;
+				color: var(--text-secondary);
+				gap: 16px;
+			}
 
-      .loading-state .spinner {
-        width: 32px;
-        height: 32px;
-        border: 3px solid var(--overlay);
-        border-top-color: var(--tint);
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-      }
+			.loading-state .spinner {
+				width: 32px;
+				height: 32px;
+				border: 3px solid var(--overlay);
+				border-top-color: var(--tint);
+				border-radius: 50%;
+				animation: spin 0.8s linear infinite;
+			}
 
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
+			@keyframes spin {
+				to {
+					transform: rotate(360deg);
+				}
+			}
 
-      .error-state {
-        text-align: center;
-        padding: 64px 0;
-        color: #ff6b6b;
-      }
+			.error-state {
+				text-align: center;
+				padding: 64px 0;
+				color: #ff6b6b;
+			}
 
-      @media (max-width: 768px) {
-        .privacy-content {
-          padding: 24px;
-        }
-        .privacy-content h1 {
-          font-size: 24px;
-        }
-        .privacy-content h2 {
-          font-size: 18px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <header class="header">
-        <a href="/">
-          <div class="logo-container">
-            <img src="iconlarge.svg" alt="UniPlan Logo" class="logo" />
-          </div>
-        </a>
-        <nav class="nav">
-          <a href="/" class="nav-link">Download</a>
-          <a href="/#features" class="nav-link">Features</a>
-        </nav>
-      </header>
+			@media (max-width: 768px) {
+				.privacy-content {
+					padding: 24px;
+				}
+				.privacy-content h1 {
+					font-size: 24px;
+				}
+				.privacy-content h2 {
+					font-size: 18px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<header class="header">
+				<a href="/">
+					<div class="logo-container">
+						<img src="iconlarge.svg" alt="UniPlan Logo" class="logo" />
+					</div>
+				</a>
+				<nav class="nav">
+					<a href="/" class="nav-link">Download</a>
+					<a href="/#features" class="nav-link">Features</a>
+				</nav>
+			</header>
 
-      <main>
-        <section class="privacy-section">
-          <a href="/" class="back-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
-              />
-            </svg>
-            Back to Home
-          </a>
+			<main>
+				<section class="privacy-section">
+					<a href="/" class="back-link">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+							<path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+						</svg>
+						Back to Home
+					</a>
 
-          <div class="privacy-content" id="content">
-            <div class="loading-state">
-              <div class="spinner"></div>
-              <p>Loading deletion information...</p>
-            </div>
-          </div>
-        </section>
-      </main>
+					<div class="privacy-content" id="content">
+						<div class="loading-state">
+							<div class="spinner"></div>
+							<p>Loading deletion information...</p>
+						</div>
+					</div>
+				</section>
+			</main>
 
-      <footer class="footer">
-        <p>&copy; 2026 dStudios: UniPlan</p>
-      </footer>
-    </div>
+			<footer class="footer">
+				<p>&copy; 2026 dStudios: UniPlan</p>
+			</footer>
+		</div>
 
-    <script>
-      const DELETION_URL =
-        "https://raw.githubusercontent.com/dStudios-735453/UniPlan_Releases/refs/heads/main/deletion.md";
+		<script>
+			const DELETION_URL = "https://raw.githubusercontent.com/dStudios-735453/UniPlan_Releases/refs/heads/main/deletion.md";
 
-      async function loadDeletionInfo() {
-        const container = document.getElementById("content");
-        try {
-          const response = await fetch(DELETION_URL);
-          if (!response.ok)
-            throw new Error("Failed to fetch deletion information");
-          const markdown = await response.text();
-          container.innerHTML = marked.parse(markdown);
-        } catch (error) {
-          container.innerHTML =
-            '<div class="error-state"><p>Failed to load deletion information. Please try again later.</p></div>';
-          console.error("Error loading deletion information:", error);
-        }
-      }
+			async function loadDeletionInfo() {
+				const container = document.getElementById("content");
+				try {
+					const response = await fetch(DELETION_URL);
+					if (!response.ok) throw new Error("Failed to fetch deletion information");
+					const markdown = await response.text();
+					container.innerHTML = marked.parse(markdown);
+				} catch (error) {
+					container.innerHTML = '<div class="error-state"><p>Failed to load deletion information. Please try again later.</p></div>';
+					console.error("Error loading deletion information:", error);
+				}
+			}
 
-      document.addEventListener("DOMContentLoaded", loadDeletionInfo);
-    </script>
-  </body>
+			document.addEventListener("DOMContentLoaded", loadDeletionInfo);
+		</script>
+	</body>
 </html>
