@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pricing - UniPlan</title>
+		<link rel="icon" href="favicon.png" type="image/png" />
+		<link rel="stylesheet" href="styles.css" />
+		<style>
+			.pricing-section {
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 48px 0;
+			}
+
+			.pricing-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 24px;
+				margin-bottom: 80px;
+			}
+
+			.pricing-card {
+				background: var(--card);
+				border: 1px solid var(--overlay);
+				border-radius: 24px;
+				padding: 32px;
+				text-align: center;
+				transition: all 0.2s ease;
+				position: relative;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.pricing-card:hover {
+				border-color: var(--overlay-hover);
+				transform: translateY(-4px);
+			}
+
+			.pricing-card.featured {
+				border-color: var(--accent);
+				box-shadow: 0 0 24px rgba(255, 59, 48, 0.15);
+			}
+
+			.pricing-card.featured::before {
+				content: "Best Value";
+				position: absolute;
+				top: -12px;
+				left: 50%;
+				transform: translateX(-50%);
+				background: var(--accent);
+				color: var(--tint);
+				padding: 4px 16px;
+				border-radius: 20px;
+				font-size: 12px;
+				font-weight: 600;
+				letter-spacing: 0.5px;
+				text-transform: uppercase;
+			}
+
+			.plan-name {
+				font-size: 20px;
+				font-weight: 600;
+				margin-bottom: 8px;
+				color: var(--tint);
+			}
+
+			.plan-price {
+				font-size: 42px;
+				font-weight: 700;
+				color: var(--tint);
+				margin-bottom: 4px;
+			}
+
+			.plan-price .currency {
+				font-size: 20px;
+				font-weight: 600;
+				vertical-align: super;
+			}
+
+			.plan-period {
+				font-size: 14px;
+				color: var(--text-secondary);
+				margin-bottom: 24px;
+			}
+
+			.plan-divider {
+				border: none;
+				border-top: 1px solid var(--border);
+				margin: 0 -8px 24px;
+			}
+
+			.plan-features {
+				list-style: none;
+				padding: 0;
+				margin: 0 0 32px;
+				flex: 1;
+				text-align: left;
+			}
+
+			.plan-features li {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				padding: 8px 0;
+				font-size: 14px;
+				color: var(--text-secondary);
+				line-height: 1.5;
+			}
+
+			.plan-features li .check {
+				width: 20px;
+				height: 20px;
+				min-width: 20px;
+				color: var(--green);
+				flex-shrink: 0;
+			}
+
+			.plan-btn {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				padding: 14px 24px;
+				background: var(--overlay);
+				border: 1px solid var(--border);
+				border-radius: 12px;
+				color: var(--text);
+				font-size: 15px;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.2s ease;
+				text-decoration: none;
+			}
+
+			.plan-btn:hover {
+				background: var(--overlay-hover);
+				border-color: var(--overlay-hover);
+			}
+
+			.plan-btn.primary {
+				background: var(--accent);
+				border-color: var(--accent);
+				color: var(--tint);
+			}
+
+			.plan-btn.primary:hover {
+				background: #ff453a;
+				box-shadow: 0 4px 16px rgba(255, 59, 48, 0.3);
+				transform: translateY(-2px);
+			}
+
+			.features-detail {
+				margin-bottom: 80px;
+			}
+
+			.features-detail .section-title {
+				margin-bottom: 48px;
+			}
+
+			.detail-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 24px;
+			}
+
+			.detail-card {
+				background: var(--card);
+				border: 1px solid var(--overlay);
+				border-radius: 16px;
+				padding: 32px;
+				text-align: center;
+				transition: all 0.2s ease;
+			}
+
+			.detail-card:hover {
+				border-color: var(--overlay-hover);
+				transform: translateY(-4px);
+			}
+
+			.detail-icon {
+				width: 56px;
+				height: 56px;
+				background: var(--overlay);
+				border-radius: 14px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 0 auto 20px;
+				color: var(--accent);
+			}
+
+			.detail-icon svg {
+				width: 28px;
+				height: 28px;
+			}
+
+			.detail-card h3 {
+				font-size: 18px;
+				font-weight: 600;
+				margin-bottom: 8px;
+				color: var(--tint);
+			}
+
+			.detail-card p {
+				font-size: 14px;
+				color: var(--text-secondary);
+				line-height: 1.6;
+			}
+
+			.whats-free {
+				margin-bottom: 80px;
+			}
+
+			.free-card {
+				background: var(--card);
+				border: 1px solid var(--overlay);
+				border-radius: 24px;
+				padding: 48px;
+				text-align: center;
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+			}
+
+			.free-card h2 {
+				font-size: 28px;
+				font-weight: 700;
+				margin-bottom: 12px;
+				color: var(--tint);
+			}
+
+			.free-card p {
+				font-size: 15px;
+				color: var(--text-secondary);
+				max-width: 600px;
+				margin: 0 auto 24px;
+				line-height: 1.6;
+			}
+
+			.free-features-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 16px;
+				max-width: 700px;
+				margin: 0 auto;
+			}
+
+			.free-feature {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				padding: 12px 16px;
+				background: var(--overlay);
+				border-radius: 12px;
+				font-size: 14px;
+				color: var(--text);
+			}
+
+			.free-feature .check {
+				width: 18px;
+				height: 18px;
+				min-width: 18px;
+				color: var(--green);
+				flex-shrink: 0;
+			}
+
+			.faq-section {
+				margin-bottom: 48px;
+			}
+
+			.faq-grid {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 16px;
+			}
+
+			.faq-item {
+				background: var(--card);
+				border: 1px solid var(--overlay);
+				border-radius: 16px;
+				padding: 24px;
+				transition: all 0.2s ease;
+			}
+
+			.faq-item:hover {
+				border-color: var(--overlay-hover);
+			}
+
+			.faq-item h3 {
+				font-size: 15px;
+				font-weight: 600;
+				margin-bottom: 8px;
+				color: var(--tint);
+			}
+
+			.faq-item p {
+				font-size: 14px;
+				color: var(--text-secondary);
+				line-height: 1.6;
+			}
+
+			@media (max-width: 900px) {
+				.pricing-grid {
+					grid-template-columns: 1fr;
+					max-width: 400px;
+					margin: 0 auto 48px;
+				}
+
+				.detail-grid {
+					grid-template-columns: 1fr;
+					max-width: 400px;
+					margin: 0 auto;
+				}
+
+				.faq-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			@media (max-width: 480px) {
+				.pricing-card {
+					padding: 24px;
+				}
+
+				.free-card {
+					padding: 24px;
+				}
+
+				.free-card h2 {
+					font-size: 24px;
+				}
+
+				.plan-price {
+					font-size: 34px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<header class="header">
+				<a href="/">
+					<div class="logo-container">
+						<img src="iconlarge.svg" alt="UniPlan Logo" class="logo" />
+					</div>
+				</a>
+				<nav class="nav">
+					<a href="/" class="nav-link">Download</a>
+					<a href="/#features" class="nav-link">Features</a>
+					<a href="/pricing" class="nav-link active">Pricing</a>
+				</nav>
+			</header>
+
+			<main>
+				<section class="pricing-section">
+					<h1 class="hero-title">UniPlan Premium</h1>
+					<p class="hero-subtitle">Unlock powerful features to enhance your academic experience.</p>
+
+					<!-- Plans -->
+					<div class="pricing-grid">
+						<div class="pricing-card">
+							<div class="plan-name">Monthly</div>
+							<div class="plan-price"><span class="currency">&euro;</span>1.99</div>
+							<div class="plan-period">per month (price changes based on country)</div>
+							<hr class="plan-divider" />
+							<ul class="plan-features">
+								<li>
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									Cloud Sync
+								</li>
+								<li>
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									Watch App
+								</li>
+								<li>
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									Focus Mode
+								</li>
+								<li>
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									All free features
+								</li>
+							</ul>
+							<a href="/" class="plan-btn">Download UniPlan</a>
+						</div>
+
+						<div class="pricing-card featured">
+							<div class="plan-name">Yearly</div>
+							<div class="plan-price"><span class="currency">&euro;</span>19.99</div>
+							<div class="plan-period">2 Months for free (price changes based on country)</div>
+							<hr class="plan-divider" />
+							<ul class="plan-features">
+								<li>
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									Cloud Sync
+								</li>
+								<li>
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									Watch App
+								</li>
+								<li>
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									Focus Mode
+								</li>
+								<li>
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									All free features
+								</li>
+							</ul>
+							<a href="/" class="plan-btn primary">Download UniPlan</a>
+						</div>
+
+						<div class="pricing-card">
+							<div class="plan-name">Lifetime</div>
+							<div class="plan-price"><span class="currency">&euro;</span>39.99</div>
+							<div class="plan-period">one-time payment (price changes based on country)</div>
+							<hr class="plan-divider" />
+							<ul class="plan-features">
+								<li>
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									Cloud Sync
+								</li>
+								<li>
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									Watch App
+								</li>
+								<li>
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									Focus Mode
+								</li>
+								<li>
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									All free features
+								</li>
+							</ul>
+							<a href="/" class="plan-btn">Download UniPlan</a>
+						</div>
+					</div>
+
+					<!-- Premium Features Detail -->
+					<div class="features-detail">
+						<h2 class="section-title">Everything in Premium</h2>
+						<div class="detail-grid">
+							<div class="detail-card">
+								<div class="detail-icon">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+										<path d="M18 10v-4c0-3-2-5-5-5s-5 2-5 5v4" />
+										<path d="M20 21H4a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2z" />
+										<circle cx="12" cy="15" r="1" />
+									</svg>
+								</div>
+								<h3>Cloud Sync</h3>
+								<p>Back up your data to the cloud and sync across all your devices &mdash; iOS, Android, Windows, Linux and macOS.</p>
+							</div>
+							<div class="detail-card">
+								<div class="detail-icon">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+										<rect x="6" y="2" width="12" height="20" rx="2" />
+										<line x1="12" y1="18" x2="12" y2="18" />
+									</svg>
+								</div>
+								<h3>Watch App</h3>
+								<p>Access your schedule and complete tasks right from your wrist with the companion watch app.</p>
+							</div>
+							<div class="detail-card">
+								<div class="detail-icon">
+									<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+										<rect x="2" y="6" width="20" height="12" rx="2" />
+										<line x1="8" y1="10" x2="8" y2="14" />
+										<line x1="12" y1="10" x2="12" y2="14" />
+										<line x1="16" y1="10" x2="16" y2="14" />
+									</svg>
+								</div>
+								<h3>Focus Mode</h3>
+								<p>Stay on track during study sessions by blocking distracting apps and staying in the zone.</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- What's Free -->
+					<div class="whats-free">
+						<div class="free-card">
+							<h2>UniPlan is free to use</h2>
+							<p>All core features are completely free. Upgrade to Premium only if you need advanced features.</p>
+							<div class="free-features-grid">
+								<div class="free-feature">
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									Class Schedule
+								</div>
+								<div class="free-feature">
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									Homework Tracking
+								</div>
+								<div class="free-feature">
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									Todo Lists
+								</div>
+								<div class="free-feature">
+									<svg class="check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+									Calendar Integration
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- FAQ -->
+					<div class="faq-section">
+						<h2 class="section-title">Frequently Asked Questions</h2>
+						<div class="faq-grid">
+							<div class="faq-item">
+								<h3>How do I subscribe?</h3>
+								<p>Download UniPlan for your platform and create an account. You can subscribe directly inside the app with just a few taps.</p>
+							</div>
+							<div class="faq-item">
+								<h3>Can I switch plans?</h3>
+								<p>Yes! You can upgrade your plan at any time. Changes take effect immediately.</p>
+							</div>
+							<div class="faq-item">
+								<h3>Is there a free trial?</h3>
+								<p>No, but premium features are available immediately upon subscribing. The free version includes all core features with no time limit.</p>
+							</div>
+							<div class="faq-item">
+								<h3>How do payments work?</h3>
+								<p>Payments are processed securely through the App Store or Google Play. Your subscription auto-renews unless cancelled at least 24 hours before the renewal date.</p>
+							</div>
+							<div class="faq-item">
+								<h3>Can I get a refund?</h3>
+								<p>Refunds are handled through the App Store or Google Play or Paddle depending on your platform. Please contact their support for refund requests.</p>
+							</div>
+							<div class="faq-item">
+								<h3>Is my data safe?</h3>
+								<p>Absolutely. Cloud Sync data is encrypted end-to-end. We never share your data with third parties. See our Privacy Policy for details.</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+
+			<footer class="footer">
+				<p>
+					&copy; 2026 dStudios: UniPlan &mdash;
+					<a href="/license" style="color: var(--text-secondary); text-decoration: none">License</a>
+					&mdash;
+					<a href="/privacy" style="color: var(--text-secondary); text-decoration: none">Privacy</a>
+					&mdash;
+					<a href="/tos" style="color: var(--text-secondary); text-decoration: none">TOS</a>
+					&mdash;
+					<a href="/deletion" style="color: var(--text-secondary); text-decoration: none">Data Deletion</a>
+				</p>
+			</footer>
+		</div>
+	</body>
+</html>

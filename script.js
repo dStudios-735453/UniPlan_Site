@@ -69,7 +69,7 @@ const downloadData = {
 				id: "void",
 				name: "Void Linux",
 				type: "command",
-				command: "xbps-install -S uniplan",
+				command: "sudo xbps-install -Syu && sudo xbps-install -y void-repo-nonfree && sudo xbps-install -S uniplan",
 			},
 			{
 				id: "appimage",
